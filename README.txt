@@ -1,6 +1,6 @@
-Runner Lap Tracker Pro - Standalone Website
+Runner Lap Tracker Pro - Clean Standalone Version
 
-Upload these files as a new Vercel project:
+Files included:
 - index.html
 - styles.css
 - script.js
@@ -8,9 +8,13 @@ Upload these files as a new Vercel project:
 - feedback.js
 - how-to-use.html
 
-Open index.html locally in Visual Studio Code with Live Server to test before deploying.
+Updates in this version:
+- Student names now show clearly in both the selection grids and running grids.
+- Maximum class list size is capped at 43 students. If more than 43 students are uploaded, only the first 43 will be loaded.
+- The site remains a clean, simple standalone Pro website.
 
-Recommended class list columns:
-Index, Name, Gender, Age, Class, Teacher, Current Time
-
-The look and feel is intentionally kept close to the original Runner Lap Tracker: clean white background, centered content, simple buttons, simple grids, and colour-coded lap panels.
+How to test in Visual Studio Code:
+1. Open this folder in VS Code.
+2. Right-click index.html.
+3. Select Open with Live Server.
+4. Upload or load a sample class list.

@@ -1,0 +1,117 @@
+:root {
+  --bg: #07111f;
+  --card: #0f172a;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+  --line: rgba(148, 163, 184, 0.25);
+  --brand: #22c55e;
+  --brand-dark: #15803d;
+  --warn: #f59e0b;
+  --danger: #ef4444;
+  --panel: #1f2937;
+  --radius: 16px;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, rgba(34,197,94,0.12), transparent 28%), var(--bg);
+  color: var(--text);
+}
+
+.topbar, main, footer { width: min(1120px, calc(100% - 28px)); margin: 0 auto; }
+.topbar { display: flex; justify-content: space-between; gap: 18px; align-items: center; padding: 24px 0 10px; }
+h1 { margin: 0; font-size: clamp(28px, 5vw, 44px); }
+h2 { margin: 0 0 8px; }
+p { margin: 6px 0; }
+.muted { color: var(--muted); }
+nav { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+nav a { color: var(--text); text-decoration: none; border: 1px solid var(--line); padding: 9px 12px; border-radius: 999px; }
+nav a[aria-current="page"], nav a:hover { background: rgba(34, 197, 94, 0.15); border-color: var(--brand); }
+
+.card {
+  background: rgba(15, 23, 42, 0.92);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: clamp(16px, 3vw, 24px);
+  margin: 18px 0;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.24);
+}
+.two-col { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+label { display: block; font-weight: 700; margin-bottom: 6px; }
+input, select, button {
+  font: inherit;
+  border-radius: 12px;
+}
+input, select {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid var(--line);
+  background: #020617;
+  color: var(--text);
+}
+button {
+  border: 1px solid var(--line);
+  background: #111827;
+  color: var(--text);
+  padding: 10px 14px;
+  cursor: pointer;
+  font-weight: 700;
+}
+button:hover { filter: brightness(1.12); }
+button.primary { background: var(--brand-dark); border-color: var(--brand); }
+button:disabled { opacity: 0.45; cursor: not-allowed; }
+.section-head { display: flex; justify-content: space-between; gap: 16px; align-items: center; }
+.actions { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+.status { margin-top: 10px; color: var(--muted); }
+
+.student-grid, .runner-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(138px, 1fr));
+  gap: 10px;
+  margin-top: 16px;
+}
+.student-card, .runner-card {
+  min-height: 96px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--text);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+}
+.student-card.selected { background: var(--brand-dark); border-color: var(--brand); }
+.index { font-size: 28px; font-weight: 900; line-height: 1; }
+.name { font-size: 15px; margin-top: 6px; font-weight: 700; }
+.small { font-size: 12px; color: var(--muted); margin-top: 4px; }
+.runner-card .laps { margin-top: 8px; font-size: 14px; font-weight: 800; }
+#elapsedTime { font-size: 44px; font-weight: 900; letter-spacing: 1px; }
+
+.runner-card.lap-20, .runner-card.lap-14, .runner-card.lap-9, .runner-card.lap-4 { background: #0f766e; }
+.runner-card.lap-19, .runner-card.lap-13, .runner-card.lap-8, .runner-card.lap-3 { background: #166534; }
+.runner-card.lap-18, .runner-card.lap-12, .runner-card.lap-7, .runner-card.lap-2 { background: #6d28d9; }
+.runner-card.lap-17 { background: #4d7c0f; }
+.runner-card.lap-16, .runner-card.lap-11, .runner-card.lap-6 { background: #1d4ed8; }
+.runner-card.lap-15, .runner-card.lap-10, .runner-card.lap-5 { background: #c2410c; }
+.runner-card.lap-1 { background: #b91c1c; }
+.runner-card.done { background: #111827; opacity: 0.72; cursor: default; }
+
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; margin-top: 12px; min-width: 640px; }
+th, td { border: 1px solid var(--line); padding: 10px; text-align: left; }
+th { background: rgba(148,163,184,0.12); }
+footer { color: var(--muted); padding: 24px 0 36px; text-align: center; }
+
+@media (max-width: 760px) {
+  .topbar, .section-head { display: block; }
+  nav, .actions { justify-content: flex-start; margin-top: 12px; }
+  .two-col { grid-template-columns: 1fr; }
+  .student-grid, .runner-grid { grid-template-columns: repeat(2, 1fr); }
+}

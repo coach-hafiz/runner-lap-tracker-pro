@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Runner Lap Tracker Pro</title>
+  <link rel="stylesheet" href="pro-style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>Runner Lap Tracker Pro</h1>
+      <p>Upload class list → select runners → track laps → export results.</p>
+    </div>
+    <nav>
+      <a href="index.html">Classic</a>
+      <a href="pro.html" aria-current="page">Pro Tracker</a>
+      <a href="pro-feedback.html">NAPFA Feedback</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>1. Upload Class List</h2>
+      <p class="muted">Accepted: CSV, TXT, XLS, XLSX. Recommended columns: Index, Name, Gender, Age, Class, Staff/Teacher, Current Time.</p>
+      <input type="file" id="classListFile" accept=".csv,.txt,.xls,.xlsx" />
+      <button id="loadSampleBtn" type="button">Load Sample</button>
+      <div id="uploadStatus" class="status"></div>
+    </section>
+
+    <section class="card two-col">
+      <div>
+        <label for="classField">Class</label>
+        <input type="text" id="classField" placeholder="e.g. 4B" />
+      </div>
+      <div>
+        <label for="conductedByField">Staff / Teacher</label>
+        <input type="text" id="conductedByField" placeholder="e.g. Mr Hafiz" />
+      </div>
+      <div>
+        <label for="lapCount">Number of Laps</label>
+        <select id="lapCount"></select>
+      </div>
+      <div>
+        <label for="runDistance">Test Distance</label>
+        <select id="runDistance">
+          <option value="1.6">1.6 km</option>
+          <option value="2.4" selected>2.4 km</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-head">
+        <div>
+          <h2>2. Select Students Running</h2>
+          <p class="muted">Tap a student card to select or deselect. Selected cards turn green.</p>
+        </div>
+        <div class="actions">
+          <button id="selectAllBtn" type="button">Select All</button>
+          <button id="clearSelectionBtn" type="button">Clear</button>
+          <button id="confirmRunnersBtn" type="button" class="primary">Confirm Runners</button>
+        </div>
+      </div>
+      <div id="studentGrid" class="student-grid"></div>
+      <div id="selectionStatus" class="status"></div>
+    </section>
+
+    <section class="card">
+      <div class="section-head">
+        <div>
+          <h2>3. Track Run</h2>
+          <div id="elapsedTime">00:00</div>
+        </div>
+        <div class="actions">
+          <button id="startBtn" type="button" class="primary">Start</button>
+          <button id="stopBtn" type="button">Stop</button>
+          <button id="resetBtn" type="button">Reset</button>
+          <button id="undoBtn" type="button">Undo</button>
+        </div>
+      </div>
+      <div id="runnerGrid" class="runner-grid"></div>
+    </section>
+
+    <section class="card">
+      <h2>4. Summary</h2>
+      <div id="summary"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Hafiz Bin Mohamad. Runner Lap Tracker Pro.</p>
+  </footer>
+
+  <script src="pro-script.js"></script>
+</body>
+</html>
